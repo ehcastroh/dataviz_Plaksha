@@ -1,6 +1,6 @@
 <hr style="border: 8px solid#0B0B0B;" />
 
-<img src="predli_header.png"
+<img src="./images/predli_header.png"
      alt="Predli Logo"
      align="center" 
      style="align:center" 
@@ -29,7 +29,7 @@ The following notebooks were created for Plaksha University. They are intended t
 
 #### **I. Introduction to Data Types and Visualization Principles.**
 
-<img src="Smith_Data_Levels_Numerical.png"
+<img src="./images/Smith_Data_Levels_Numerical.png"
      alt="Data Type and Encoding"
      align="center" 
      style="align:center" 
@@ -46,7 +46,7 @@ The following notebooks were created for Plaksha University. They are intended t
 
 #### **II. Comparative Visualizations, and Advanced Visualizations Using Plotly and Altair.**
 
-<img src="grammar_of_graphics_1_3stack.png"
+<img src="./images/grammar_of_graphics_1_3stack.png"
      alt="Data Type and Encoding"
      align="center" 
      style="align:center" 
