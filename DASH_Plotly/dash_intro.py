@@ -9,41 +9,55 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
+
+# create dash object ("start app")
 app = dash.Dash(__name__)
+
 
 # ------------------------------------------------------------------------------
 # Import and clean data (importing csv into pandas)
-df = pd.read_csv("./data/bii_data_w_categories.csv")
+df = pd.read_csv("bii_data_w_categories.csv")
 
-df = df.groupby(['State', 'ANSI', 'Affected by', 'Year', 'state_code'])[['Pct of Colonies Impacted']].mean()
-df.reset_index(inplace=True)
-print(df[:5])
+# create list of features for processing
+feat_cols = ['trust', 'resilience', 'diversity', 'belief', 'perfection',
+       'collaboration', 'comfort zone', 'innovation zone', 'bii score']
+
+# select feature and data (leave response variable data)
+y_data = df[feat_cols[:-1]]
+x_data = feat_cols
+
+# remove response variable form feature list
+res_cols2 = feat_cols[:-1]
+
+# compute mean and standard div
+feat_mean = df[res_cols2].mean()
+feat_std = df[res_cols2].std()
+
 
 # ------------------------------------------------------------------------------
-# App layout
+# App layout: DASH -- Components/Plots/Callbacks
 app.layout = html.Div([
+    # design object
+    html.H1("Sample Web Application Dashboards with Dash", style={'text-align': 'center'}),
 
-    html.H1("Web Application Dashboards with Dash", style={'text-align': 'center'}),
-
-    dcc.Dropdown(id="slct_year",
-                 options=[
-                     {"label": "2015", "value": 2015},
-                     {"label": "2016", "value": 2016},
-                     {"label": "2017", "value": 2017},
-                     {"label": "2018", "value": 2018}],
-                 multi=False,
-                 value=2015,
+    # interactive component
+    dcc.Dropdown(id="slct_group",
+        options=[
+        {"label": "Sales", "value": "Sales Group"},
+                     {"label": "Marketing", "value": "Marketing Group"},
+                     {"label": "Operations", "value": "Operations Group"},
+                 value="Sales Group",
                  style={'width': "40%"}
                  ),
 
     html.Div(id='output_container', children=[]),
     html.Br(),
 
-    dcc.Graph(id='my_bee_map', figure={})
+    dcc.Graph(id='my_bii_chart', figure={})
 
 ])
 
-
+"""
 # ------------------------------------------------------------------------------
 # Connect the Plotly graphs with Dash Components
 @app.callback(
@@ -93,7 +107,7 @@ def update_graph(option_slctd):
     # )
 
     return container, fig
-
+"""
 
 # ------------------------------------------------------------------------------
 if __name__ == '__main__':

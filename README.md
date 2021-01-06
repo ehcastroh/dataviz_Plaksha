@@ -35,7 +35,6 @@ The following notebooks were created for Plaksha University. They are intended t
      style="align:center" 
      width="30%"/>
      
-    0) Introduction to RISE: Executable Slide Deck.
     1) Principles of Visualization: Data Types and Their Connection to Visualizations.
     2) Overview of Matplotlib
     3) Overview of Seaborn
